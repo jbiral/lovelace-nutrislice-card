@@ -19,7 +19,7 @@ Add the following to your dashboard:
 ```yaml
 type: custom:nutrislice-card
 entity: sensor.nutrislice_menu_your_school
-title: "School Menu"
+title: 'School Menu'
 categories:
   - entree
   - sides

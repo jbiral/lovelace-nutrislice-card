@@ -1,0 +1,18 @@
+{
+  "name": "nutrislice-card",
+  "version": "1.0.0",
+  "description": "Lovelace card for Nutrislice school menus",
+  "main": "nutrislice-card.js",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3"
+  },
+  "license": "MIT"
+}

@@ -54,7 +54,7 @@ class NutrisliceCard extends HTMLElement {
 
       this._hass.callService('nutrislice', 'set_date', {
         entity_id: this.config.entity,
-        date: dateStr
+        date: dateStr,
       });
     });
     nav.querySelector('#next-btn').addEventListener('click', () => {
@@ -67,7 +67,7 @@ class NutrisliceCard extends HTMLElement {
 
       this._hass.callService('nutrislice', 'set_date', {
         entity_id: this.config.entity,
-        date: dateStr
+        date: dateStr,
       });
     });
 
@@ -78,7 +78,7 @@ class NutrisliceCard extends HTMLElement {
     todayBtn.addEventListener('click', () => {
       this._hass.callService('nutrislice', 'set_date', {
         entity_id: this.config.entity,
-        date: 'today'
+        date: 'today',
       });
     });
     header.appendChild(todayBtn);
@@ -256,7 +256,7 @@ class NutrisliceCard extends HTMLElement {
     }
 
     // Find the specific day
-    const dayData = attributes.days.find(d => d.date === targetDateStr);
+    const dayData = attributes.days.find((d) => d.date === targetDateStr);
 
     if (!dayData) {
       this.content.innerHTML = `<div class="state-msg">No data available for ${this.formatDate(this._currentDate)}.</div>`;
@@ -294,28 +294,29 @@ class NutrisliceCard extends HTMLElement {
     // Default to categories from the sensor, then config, then hardcoded entree
     let itemsToShow = dayData.menu_items || [];
     const sensorCategories = attributes.categories || [];
-    const allowedCategories = this.config.categories || (sensorCategories.length > 0 ? sensorCategories : ['entree']);
+    const allowedCategories =
+      this.config.categories || (sensorCategories.length > 0 ? sensorCategories : ['entree']);
 
     if (allowedCategories.length > 0) {
       // Ensure all allowed categories are lowercase for matching
-      const lowerAllowed = allowedCategories.map(c => c.toLowerCase());
+      const lowerAllowed = allowedCategories.map((c) => c.toLowerCase());
 
       // Virtual "sides" expansion
       const sidesAlias = ['vegetable', 'fruit', 'grain', 'side'];
-      const hasSides = lowerAllowed.some(a => a === 'sides' || a === 'side');
+      const hasSides = lowerAllowed.some((a) => a === 'sides' || a === 'side');
 
-      itemsToShow = itemsToShow.filter(item => {
-        const itemCat = (item.category || "").toLowerCase();
+      itemsToShow = itemsToShow.filter((item) => {
+        const itemCat = (item.category || '').toLowerCase();
 
         // Exact or partial match
-        const matchesDirectly = lowerAllowed.some(allowed =>
-          itemCat.includes(allowed) || allowed.includes(itemCat)
+        const matchesDirectly = lowerAllowed.some(
+          (allowed) => itemCat.includes(allowed) || allowed.includes(itemCat),
         );
 
         // Alias match for sides
-        const matchesSidesAlias = hasSides && sidesAlias.some(alias =>
-          itemCat.includes(alias) || alias.includes(itemCat)
-        );
+        const matchesSidesAlias =
+          hasSides &&
+          sidesAlias.some((alias) => itemCat.includes(alias) || alias.includes(itemCat));
 
         return matchesDirectly || matchesSidesAlias;
       });
@@ -327,7 +328,7 @@ class NutrisliceCard extends HTMLElement {
     }
 
     let html = '';
-    itemsToShow.forEach(item => {
+    itemsToShow.forEach((item) => {
       html += `
         <div class="menu-item">
           <div class="item-text">
@@ -349,9 +350,9 @@ class NutrisliceCard extends HTMLElement {
 
   static getStubConfig() {
     return {
-      entity: "",
-      title: "School Menu",
-      categories: ["entree"]
+      entity: '',
+      title: 'School Menu',
+      categories: ['entree'],
     };
   }
 }
@@ -362,8 +363,8 @@ if (!customElements.get('nutrislice-card')) {
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "nutrislice-card",
-  name: "Nutrislice Menu Card",
+  type: 'nutrislice-card',
+  name: 'Nutrislice Menu Card',
   preview: true,
-  description: "A card to display school lunch menus from the Nutrislice integration."
+  description: 'A card to display school lunch menus from the Nutrislice integration.',
 });
