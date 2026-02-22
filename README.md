@@ -1,6 +1,6 @@
 # Nutrislice Card
 
-A Home Assistant Lovelace card to display school lunch menus from the Nutrislice integration.
+A Home Assistant Lovelace card to display school lunch menus from the [Nutrislice Home Assistant Integration](https://github.com/jbiral/nutrislice-ha).
 
 ## Installation
 
