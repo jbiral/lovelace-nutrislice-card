@@ -1,0 +1,6 @@
+{
+  "name": "Nutrislice Card",
+  "content_type": "plugin",
+  "filename": "nutrislice-card.js",
+  "render_readme": true
+}
