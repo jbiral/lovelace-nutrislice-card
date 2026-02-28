@@ -54,7 +54,7 @@ class NutrisliceCard extends HTMLElement {
 
       this._hass.callService('nutrislice', 'set_date', {
         entity_id: this.config.entity,
-        dateStr: dateStr,
+        date: dateStr,
       });
     });
     nav.querySelector('#next-btn').addEventListener('click', () => {
@@ -78,7 +78,7 @@ class NutrisliceCard extends HTMLElement {
     todayBtn.addEventListener('click', () => {
       this._hass.callService('nutrislice', 'set_date', {
         entity_id: this.config.entity,
-        dateStr: 'today',
+        date: 'today',
       });
     });
     header.appendChild(todayBtn);
