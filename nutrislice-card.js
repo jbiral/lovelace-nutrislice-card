@@ -1,5 +1,9 @@
-const LitElement = Object.getPrototypeOf(customElements.get("ha-panel-lovelace")).prototype.constructor;
-const { html, css, svg } = LitElement;
+import {
+  LitElement,
+  html,
+  css,
+  svg,
+} from 'https://unpkg.com/lit-element@4.2.2/lit-element.js?module';
 
 class NutrisliceCard extends LitElement {
   static get properties() {
